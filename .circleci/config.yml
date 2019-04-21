@@ -1,0 +1,16 @@
+version: 2.1
+
+jobs:
+  deploy:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: deploy prowler
+          command: 'make prowler'
+
+workflows:
+  version: 2
+  deploy_prowler:
+    jobs:
+      - deploy
