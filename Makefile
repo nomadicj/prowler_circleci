@@ -2,22 +2,8 @@
 SHELL := /bin/bash
 .SILENT:
 
-# default variables
-TIER ?= capabilities
-CAPABILITY ?= testing
-ENV ?= dummy
-REGION ?= au
-
-# available options, use regex to string check
-RE_TIER = ^(core|capabilities)$$
-RE_CAPABILITY = ^(lending|wealth|super|marketdata|trading|platform|digital|sourcing|sharedservices|auth|tech|testing|workload)$$
-RE_ENV = ^(dummy|development|staging|uat|production)$$
-RE_REGION = ^(au|uk|za|ca|sg|us)$$
-
 # docker-compose calls
 PROWLER = docker-compose run prowler
-
-export COMPOSE_PROJECT_NAME = secops_$(TIER)_$(CAPABILITY)_$(ENV)_$(REGION)
 
 ##@ Entry Points
 .PHONY: all
